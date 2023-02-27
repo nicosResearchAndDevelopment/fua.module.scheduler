@@ -1,0 +1,32 @@
+{
+  "name": "@nrd/fua.module.scheduler",
+  "version": "2.0.0",
+  "description": "",
+  "main": "src/scheduler.js",
+  "files": [
+    "src/*"
+  ],
+  "dependencies": {
+    "@nrd/fua.core.assert": "^2.0.0",
+    "@nrd/fua.core.is": "^2.0.0",
+    "cron-parser": "^4.7.1"
+  },
+  "devDependencies": {
+    "expect": "26.x",
+    "mocha": "10.x"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "mocha": {
+    "bail": false,
+    "recursive": false,
+    "spec": "test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@git02.int.nsc.ag:10022/nrd/fua/module/scheduler.git"
+  },
+  "author": "spetrac@nicos-ag.com",
+  "license": "UNLICENSED"
+}
