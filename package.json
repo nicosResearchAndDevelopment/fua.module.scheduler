@@ -9,7 +9,9 @@
   "dependencies": {
     "@nrd/fua.core.assert": "^2.0.0",
     "@nrd/fua.core.is": "^2.0.0",
-    "cron-parser": "^4.7.1"
+    "@nrd/fua.core.ts": "^2.0.0",
+    "@nrd/fua.core.tty": "^2.0.0",
+    "cron-parser": "4.x"
   },
   "devDependencies": {
     "expect": "26.x",
