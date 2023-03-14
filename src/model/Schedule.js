@@ -1,4 +1,5 @@
 const
+    model = require('../model.js'),
     util = require('../util.js'),
     is = require('@nrd/fua.core.is'),
     assert = require('@nrd/fua.core.assert'),
@@ -15,7 +16,7 @@ class Schedule {
     #nextTime = 0;
 
     /** @type {Date | null} */ #date = null;
-    /** @type {CronExpression | null} */ #interval = null;
+    /** @type {model.CronExpression | null} */ #interval = null;
     /** @type {boolean} */ #manual = false;
 
 
@@ -30,8 +31,8 @@ class Schedule {
     }
 
     /**
-     * @param {IdentifierString} id
-     * @param {ScheduleOption} schedule
+     * @param {model.IdentifierString} id
+     * @param {model.ScheduleOption} schedule
      */
     constructor(id, schedule) {
         assert.string.identifier(id);
@@ -49,7 +50,7 @@ class Schedule {
 
     /**
      * The 'id' of the schedule represents the event that will be triggered for the scheduler.
-     * @returns {IdentifierString}
+     * @returns {model.IdentifierString}
      */
     get id() {
         return this.#id;
@@ -57,7 +58,7 @@ class Schedule {
 
     /**
      * A getter to the time this schedule will trigger next in epoch milliseconds.
-     * @returns {DateValue}
+     * @returns {model.DateValue}
      */
     get nextTime() {
         return this.#nextTime;
@@ -65,7 +66,7 @@ class Schedule {
 
     /**
      * A getter to the time this schedule has triggered last in epoch milliseconds.
-     * @returns {DateValue}
+     * @returns {model.DateValue}
      */
     get lastTime() {
         return this.#lastTime;
@@ -100,7 +101,7 @@ class Schedule {
 
     /**
      * The 'trigger' event occurs when the trigger function is called.
-     * @param {function} callback
+     * @param {Function} callback
      * @returns {this}
      */
     onTrigger(callback) {
@@ -109,7 +110,7 @@ class Schedule {
 
     /**
      * The update method can change an existing schedule.
-     * @param {ScheduleOption} schedule
+     * @param {model.ScheduleOption} schedule
      * @returns {this}
      */
     update(schedule) {
@@ -134,7 +135,7 @@ class Schedule {
 
     /**
      * The 'update' event occurs after a trigger event or schedule update to reinsert the schedule into the timeline.
-     * @param {function} callback
+     * @param {Function} callback
      * @returns {this}
      */
     onUpdate(callback) {
@@ -155,7 +156,7 @@ class Schedule {
 
     /**
      * The 'destroy' event occurs when the schedule is removed or after a final trigger.
-     * @param {function} callback
+     * @param {Function} callback
      * @returns {this}
      */
     onDestroy(callback) {
@@ -175,7 +176,7 @@ class Schedule {
 
     /**
      * @param {'trigger' | 'update' | 'destroy'} event
-     * @param {function} callback
+     * @param {Function} callback
      * @returns {this}
      */
     once(event, callback) {
@@ -186,7 +187,7 @@ class Schedule {
 
     /**
      * @param {'trigger' | 'update' | 'destroy'} event
-     * @param {function} callback
+     * @param {Function} callback
      * @returns {this}
      */
     off(event, callback) {
@@ -198,12 +199,12 @@ class Schedule {
     /**
      * A generic json representation for the current schedule state.
      * @returns {{
-     *     id: IdentifierString,
+     *     id: model.IdentifierString,
      *     manual?: true,
      *     onetime?: true,
      *     recurring?: true,
-     *     lastTime?: DateValue,
-     *     nextTime?: DateValue,
+     *     lastTime?: model.DateValue,
+     *     nextTime?: model.DateValue,
      *     destroyed?: true
      * }}
      */

@@ -11,9 +11,16 @@ util.sealModule = function (target) {
 
 // const cronStringPattern = /^[0-9a-z*,\-/?#@ ]+$/i;
 const cronStringPattern = /^(?:@\w+|(?:[\w*,\-/?#]+(?= |$) ?){5,6})$/i;
+/**
+ * @param {unknown} value
+ * @returns {value is import('./model.js').CronString}
+ */
 util.isCronString = (value) => is.string(value) && cronStringPattern.test(value);
 
-/** @type {(CronString) => CronExpression} */
+/**
+ * @param {import('./model.js').CronString} value
+ * @returns {import('./model.js').CronExpression}
+ */
 util.parseCronExpression = require('cron-parser').parseExpression;
 
 Object.freeze(util);

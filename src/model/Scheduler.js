@@ -10,8 +10,8 @@ const
 class Scheduler {
 
     #emitter = new EventEmitter();
-    /** @type {Map<IdentifierString, Schedule>} */ #schedules = new Map();
-    /** @type {Array<Schedule>} */ #timeline = [];
+    /** @type {Map<model.IdentifierString, model.Schedule>} */ #schedules = new Map();
+    /** @type {Array<model.Schedule>} */ #timeline = [];
     /** @type {Timeout | null} */ #currentTimeout = null;
 
     #startTimeout() {
@@ -46,7 +46,7 @@ class Scheduler {
     }
 
     /**
-     * @param {Schedule} schedule
+     * @param {model.Schedule} schedule
      */
     #queueSchedule(schedule) {
         if (!schedule.nextTime) return;
@@ -69,7 +69,7 @@ class Scheduler {
     }
 
     /**
-     * @param {Schedule} schedule
+     * @param {model.Schedule} schedule
      */
     #dequeueSchedule(schedule) {
         const index = this.#timeline.indexOf(schedule);
@@ -83,7 +83,7 @@ class Scheduler {
     }
 
     /**
-     * @param {{[key: IdentifierString]: ScheduleOption}} [schedules]
+     * @param {{[key: model.IdentifierString]: model.ScheduleOption}} [schedules]
      */
     constructor(schedules) {
         if (is.object(schedules)) {
@@ -95,7 +95,7 @@ class Scheduler {
 
     /**
      * A method to check whether a specific 'id' is already scheduled.
-     * @param {IdentifierString} scheduleId
+     * @param {model.IdentifierString} scheduleId
      * @returns {boolean}
      */
     isScheduled(scheduleId) {
@@ -104,7 +104,7 @@ class Scheduler {
 
     /**
      * A method to check whether an object is a schedule from this scheduler.
-     * @param {Schedule} schedule
+     * @param {model.Schedule} schedule
      * @returns {boolean}
      */
     isSchedule(schedule) {
@@ -113,8 +113,8 @@ class Scheduler {
 
     /**
      * A method to retrieve an existing schedule.
-     * @param {IdentifierString} scheduleId
-     * @returns {Schedule | null}
+     * @param {model.IdentifierString} scheduleId
+     * @returns {model.Schedule | null}
      */
     getSchedule(scheduleId) {
         return this.#schedules.get(scheduleId) || null;
@@ -122,9 +122,9 @@ class Scheduler {
 
     /**
      * A method to create a new schedule. Depending on the input argument the schedule is recurring or triggered once.
-     * @param {IdentifierString} scheduleId
-     * @param {ScheduleOption} scheduleTime
-     * @returns {Schedule}
+     * @param {model.IdentifierString} scheduleId
+     * @param {model.ScheduleOption} scheduleTime
+     * @returns {model.Schedule}
      */
     createSchedule(scheduleId, scheduleTime) {
         assert.string.identifier(scheduleId);
@@ -135,8 +135,8 @@ class Scheduler {
 
     /**
      * A method to append a schedule that has been created outside the scheduler.
-     * @param {Schedule} schedule
-     * @returns {Schedule}
+     * @param {model.Schedule} schedule
+     * @returns {model.Schedule}
      */
     appendSchedule(schedule) {
         assert.instance(schedule, model.Schedule);
@@ -160,7 +160,7 @@ class Scheduler {
 
     /**
      * A method to remove a recurring schedule or a one time schedule that has not been triggered yet.
-     * @param {IdentifierString} scheduleId
+     * @param {model.IdentifierString} scheduleId
      * @returns {this}
      */
     removeSchedule(scheduleId) {
@@ -174,9 +174,9 @@ class Scheduler {
     }
 
     /**
-     * @param {IdentifierString} event
-     * @param {(Schedule) => any} callback
-     * @returns {Scheduler}
+     * @param {model.IdentifierString} event
+     * @param {(schedule: model.Schedule) => any} callback
+     * @returns {model.Scheduler}
      */
     on(event, callback) {
         this.#emitter.on(event, callback);
@@ -184,9 +184,9 @@ class Scheduler {
     }
 
     /**
-     * @param {IdentifierString} event
-     * @param {(Schedule) => any} callback
-     * @returns {Scheduler}
+     * @param {model.IdentifierString} event
+     * @param {(schedule: model.Schedule) => any} callback
+     * @returns {model.Scheduler}
      */
     once(event, callback) {
         this.#emitter.once(event, callback);
@@ -194,9 +194,9 @@ class Scheduler {
     }
 
     /**
-     * @param {IdentifierString} event
-     * @param {function} callback
-     * @returns {Scheduler}
+     * @param {model.IdentifierString} event
+     * @param {Function} callback
+     * @returns {model.Scheduler}
      */
     off(event, callback) {
         this.#emitter.off(event, callback);

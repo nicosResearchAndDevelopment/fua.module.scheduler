@@ -1,11 +1,12 @@
 const
+    scheduler = exports,
     util = require('./util.js'),
     model = require('./model.js');
 
-exports.Schedule = model.Schedule;
-exports.Scheduler = model.Scheduler;
+scheduler.Schedule = model.Schedule;
+scheduler.Scheduler = model.Scheduler;
 
-exports.isCronString = util.isCronString;
-exports.parseCronExpression = util.parseCronExpression;
+scheduler.isCronString = util.isCronString;
+scheduler.parseCronExpression = util.parseCronExpression;
 
-util.sealModule(exports);
+util.sealModule(scheduler);
