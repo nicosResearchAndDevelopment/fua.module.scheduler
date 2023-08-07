@@ -1,6 +1,6 @@
 {
   "name": "@nrd/fua.module.scheduler",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "",
   "main": "src/scheduler.js",
   "files": [
@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@git02.int.nsc.ag:10022/nrd/fua/module/scheduler.git"
+    "url": "ssh://git@git02.int.nsc.ag:10022/research/fua/module/scheduler.git"
   },
   "author": "spetrac@nicos-ag.com",
   "license": "UNLICENSED"
