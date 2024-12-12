@@ -1,4 +1,4 @@
-# @nrd/fua.module.scheduler
+# @fua/module.scheduler
 
 ## Interface
 

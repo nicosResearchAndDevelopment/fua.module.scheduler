@@ -1,6 +1,6 @@
 const
     util = exports,
-    is = require('@nrd/fua.core.is');
+    is = require('@fua/core.is');
 
 util.sealModule = function (target) {
     Object.freeze(target);

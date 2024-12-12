@@ -1,9 +1,9 @@
 const
     model = require('../model.js'),
-    is = require('@nrd/fua.core.is'),
-    assert = require('@nrd/fua.core.assert'),
-    ts = require('@nrd/fua.core.ts'),
-    tty = require('@nrd/fua.core.tty'),
+    is = require('@fua/core.is'),
+    assert = require('@fua/core.assert'),
+    ts = require('@fua/core.ts'),
+    tty = require('@fua/core.tty'),
     EventEmitter = require('events'),
     timers = require('timers');
 

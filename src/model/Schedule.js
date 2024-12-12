@@ -1,9 +1,9 @@
 const
     model = require('../model.js'),
     util = require('../util.js'),
-    is = require('@nrd/fua.core.is'),
-    assert = require('@nrd/fua.core.assert'),
-    ts = require('@nrd/fua.core.ts'),
+    is = require('@fua/core.is'),
+    assert = require('@fua/core.assert'),
+    ts = require('@fua/core.ts'),
     EventEmitter = require('events');
 
 class Schedule {
